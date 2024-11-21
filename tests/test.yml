@@ -1,0 +1,5 @@
+---
+- name: Test du rôle ansible-role-webapp
+  hosts: localhost
+  roles:
+    - ansible-role-webapp

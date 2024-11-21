@@ -1,0 +1,22 @@
+---
+# Tâches principales pour configurer une application web
+- name: Installer les dépendances
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - nginx
+    - python3
+
+- name: Déployer la configuration Nginx
+  template:
+    src: webapp.conf.j2
+    dest: /etc/nginx/sites-available/webapp.conf
+  notify:
+    - Restart Nginx
+
+- name: Activer la configuration
+  file:
+    src: /etc/nginx/sites-available/webapp.conf
+    dest: /etc/nginx/sites-enabled/webapp.conf
+    state: link

@@ -1,0 +1,4 @@
+---
+# Variables par défaut
+webapp_port: 8080
+webapp_server_name: "example.com"
